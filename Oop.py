@@ -31,41 +31,70 @@
 
 #Encapsulation 
 
-class Employee:
-    def __init__(self, name, salary):
-        self.name = name       
-        self.__salary = salary 
+# class Employee:
+#     def __init__(self, name, salary):
+#         self.name = name       
+#         self.__salary = salary 
 
-    def get_salary(self):       
-        return self.__salary
+#     def get_salary(self):       
+#         return self.__salary
 
-    def set_salary(self, amount):  
-        if amount > 0:
-            self.__salary = amount
-        else:
-            print("Salary must be +ve.")
+#     def set_salary(self, amount):  
+#         if amount > 0:
+#             self.__salary = amount
+#         else:
+#             print("Salary must be +ve.")
 
 
 #Abstraction
-from abc import ABC, abstractmethod # over here abc are abstract class in python to use Abstraction we use this class
+# from abc import ABC, abstractmethod # over here abc are abstract class in python to use Abstraction we use this class
 
-class Shape(ABC):
-    @abstractmethod
-    def area(self):
-        pass
+# class Shape(ABC):
+#     @abstractmethod
+#     def area(self):
+#         pass
 
-    @abstractmethod
-    def perimeter(self):
-        pass
+#     @abstractmethod
+#     def perimeter(self):
+#         pass
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+# class Rectangle(Shape):
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
 
-    def area(self):
-        return self.width * self.height
+#     def area(self):
+#         return self.width * self.height
 
-    def perimeter(self):
-        return 2 * (self.width + self.height)
+#     def perimeter(self):
+#         return 2 * (self.width + self.height)
+
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "Some generic sound"
+
+class Dog(Animal):  
+    def speak(self):
+        return "Woof"
+
+dog = Dog("Buddy")
+print(dog.speak())  
+
+
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow"
+
+def make_animal_speak(animal):
+    print(animal.speak())
+
+# Using polymorphism
+animals = [Dog("Buddy"), Cat("Whiskers")]
+for animal in animals:
+    make_animal_speak(animal)
 
