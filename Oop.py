@@ -1,30 +1,71 @@
+# class Employee:
+#     num_of_emps=0
+#     raise_amt= 1.04
+
+
+#     def __init__(self, first,last,pay):
+#         self.first= first
+#         self.last= last
+#         self.pay= pay
+#         self.email=first + '.'+ last + "@comapany.com"
+
+#         Employee.num_of_emps+=1
+    
+#     def fullname(self):
+#         return '{} {}'.format(self.first,self.last)
+    
+#     def apply_raise(self):
+#         self.pay= int(self.pay*self.raise_amt)
+
+#     @classmethod
+#     def set_raise_amt(cls,amount):
+#         pass
+
+
+
+# emp_1 = Employee('Kaustubh','shakelli', 50000)
+# emp_2 = Employee('Test','Run',90000)
+
+
+
+
+#Encapsulation 
+
 class Employee:
-    num_of_emps=0
-    raise_amt= 1.04
+    def __init__(self, name, salary):
+        self.name = name       
+        self.__salary = salary 
+
+    def get_salary(self):       
+        return self.__salary
+
+    def set_salary(self, amount):  
+        if amount > 0:
+            self.__salary = amount
+        else:
+            print("Salary must be +ve.")
 
 
-    def __init__(self, first,last,pay):
-        self.first= first
-        self.last= last
-        self.pay= pay
-        self.email=first + '.'+ last + "@comapany.com"
+#Abstraction
+from abc import ABC, abstractmethod # over here abc are abstract class in python to use Abstraction we use this class
 
-        Employee.num_of_emps+=1
-    
-    def fullname(self):
-        return '{} {}'.format(self.first,self.last)
-    
-    def apply_raise(self):
-        self.pay= int(self.pay*self.raise_amt)
-
-    @classmethod
-    def set_raise_amt(cls,amount):
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
         pass
 
+    @abstractmethod
+    def perimeter(self):
+        pass
 
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
-emp_1 = Employee('Kaustubh','shakelli', 50000)
-emp_2 = Employee('Test','Run',90000)
+    def area(self):
+        return self.width * self.height
 
-
+    def perimeter(self):
+        return 2 * (self.width + self.height)
 
