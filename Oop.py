@@ -70,31 +70,64 @@
 #         return 2 * (self.width + self.height)
 
 
-class Animal:
-    def __init__(self, name):
-        self.name = name
+# class Animal:
+#     def __init__(self, name):
+#         self.name = name
 
-    def speak(self):
-        return "Some generic sound"
+#     def speak(self):
+#         return "Some generic sound"
 
-class Dog(Animal):  
-    def speak(self):
-        return "Woof"
+# class Dog(Animal):  
+#     def speak(self):
+#         return "Woof"
 
-dog = Dog("Buddy")
-print(dog.speak())  
+# dog = Dog("Buddy")
+# print(dog.speak())  
 
 
 
-class Cat(Animal):
-    def speak(self):
-        return "Meow"
+# class Cat(Animal):
+#     def speak(self):
+#         return "Meow"
 
-def make_animal_speak(animal):
-    print(animal.speak())
+# def make_animal_speak(animal):
+#     print(animal.speak())
 
-# Using polymorphism
-animals = [Dog("Buddy"), Cat("Whiskers")]
-for animal in animals:
-    make_animal_speak(animal)
+# # Using polymorphism
+# animals = [Dog("Buddy"), Cat("Whiskers")]
+# for animal in animals:
+#     make_animal_speak(animal)
 
+
+import random
+
+def get_computer_choice():
+    choices = ['Rock', 'Paper', 'Scissors']
+    return random.choice(choices)
+
+def determine_winner(player_choice, computer_choice):
+    if player_choice == computer_choice:
+        return "It's a Draw"
+    elif (player_choice == 'Rock' and computer_choice == 'Scissors') or \
+         (player_choice == 'Paper' and computer_choice == 'Rock') or \
+         (player_choice == 'Scissors' and computer_choice == 'Paper'):
+        return "You won"
+    else:
+        return "You lost"
+
+def play_game():
+    player_choice = input("Choose Rock, Paper, or Scissors: ").capitalize()
+    
+
+    if player_choice not in ['Rock', 'Paper', 'Scissors']:
+        print("Invalid choice. Please choose Rock, Paper, or Scissors.")
+        return
+
+    computer_choice = get_computer_choice()
+    print(f"Computer chose: {computer_choice}")
+    
+    result = determine_winner(player_choice, computer_choice)
+    print(result)
+
+
+play_game()
