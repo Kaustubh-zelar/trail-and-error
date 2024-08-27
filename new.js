@@ -60,13 +60,35 @@
 //     });
 
 
+// function divide(a, b) {
+//   try {
+//       if (b === 0) {
+//           throw new Error("Division by zero is not allowed.");
+//       }
+//       return a / b;
+//   } catch (error) {
+//       console.error("Error:", error.message);
+//   } finally {
+//       console.log("Division attempt finished.");
+//   }
+// }
 
-fetch('https://example.com/api/endpoint', {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer your-token-here'
-  }
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+// divide(10, 2);
+// divide(10, 0);
+
+
+
+// function outer(){
+//    let user= "kaustubh";
+//   //  console.log(b1);
+   
+//    function inner(){
+//     console.log(user);
+//     // let b1= hello;
+//    }
+//    function brother(){
+//     let b1="hello";
+//    }
+//    inner();
+// }
+// outer();
