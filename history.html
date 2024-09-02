@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Navigation Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <a id="home-link" href="#home">Home</a>
+        <a id="about-link" href="#about">About</a>
+        <a id="contact-link" href="#contact">Contact</a>
+    </nav>
+
+    <section id="home" class="active">
+        <h1>Home</h1>
+        <p>Welcome to the home page.</p>
+    </section>
+    <section id="about">
+        <h1>About</h1>
+        <p>This is the about page.</p>
+    </section>
+    <section id="contact">
+        <h1>Contact</h1>
+        <p>This is the contact page.</p>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const section = document.getElementById(sectionId); if (section) {
+                section.classList.add('active');
+            }
+        }
+        function navigateTo(sectionId) {
+            showSection(sectionId);
+            history.pushState({ section: sectionId }, '', `#${sectionId}`);
+        }
+
+        document.getElementById('home-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateTo('home');
+        });
+        document.getElementById('about-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateTo('about');
+        });
+        document.getElementById('contact-link').addEventListener('click', (event) => {
+            event.preventDefault();
+            navigateTo('contact');
+        });
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.section) {
+                showSection(event.state.section);
+            } else {
+                showSection('home');
+            }
+        });
+        window.addEventListener('load', () => {
+            const section = location.hash.replace('#', '') || 'home';
+            showSection(section);
+            if (!history.state) {
+                history.replaceState({ section: section }, '', `#${section}`);
+            }
+        });
+    </script>
+</body>
+
+</html>
